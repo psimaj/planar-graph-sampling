@@ -4,7 +4,7 @@
 HalfEdge::HalfEdge(HalfVertexPtr _origin) : origin(_origin) {}
 
 
-HalfVertex::isLeaf() {
+bool HalfVertex::isLeaf() {
     return edge->other->next == edge;
 }
 
