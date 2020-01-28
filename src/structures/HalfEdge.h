@@ -10,8 +10,8 @@ struct HalfVertex;
 struct HalfVertexData;
 struct RootedHalfGraph;
 
-typedef std::shared_ptr<HalfEdge> HalfEdgePtr;
-typedef std::shared_ptr<HalfVertex> HalfVertexPtr;
+using std::shared_ptr<HalfEdge> = HalfEdgePtr;
+using std::shared_ptr<HalfVertex> = HalfVertexPtr;
 
 struct HalfEdge {
     HalfEdgePtr previous;
