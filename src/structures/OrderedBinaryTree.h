@@ -6,7 +6,7 @@
 struct OrderedBinaryTree;
 struct OrderedBinaryTreeNode;
 
-typedef std::shared_ptr<OrderedBinaryTreeNode> OrderedBinaryTreeNodePtr;
+using std::shared_ptr<OrderedBinaryTreeNode> = OrderedBinaryTreeNodePtr;
 
 struct OrderedBinaryTreeNode {
     OrderedBinaryTreeNodePtr parent;
