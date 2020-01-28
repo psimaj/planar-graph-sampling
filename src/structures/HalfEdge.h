@@ -30,6 +30,8 @@ struct HalfVertexData {
 struct HalfVertex {
     HalfVertexData data;
     HalfEdgePtr edge;
+
+    bool isLeaf();
 };
 
 struct RootedHalfGraph {
@@ -39,6 +41,8 @@ struct RootedHalfGraph {
 
     RootedHalfGraph(OrderedBinaryTree tree);
 
+    HalfVertexPtr addVertex();
+    HalfEdgePtr addEdge(HalfVertexPtr = nullptr);
     HalfEdgePtr buildFromTree(OrderedBinaryTreeNodePtr, HalfEdgePtr);
 };
 
