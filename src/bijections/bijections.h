@@ -3,6 +3,6 @@
 
 #include "../structures/structures.h"
 
-RootedHalfGraph binaryTreeToIrreducibleDissection(RootedHalfGraph);
+void binaryTreeToIrreducibleDissection(RootedHalfGraph&);
 
 #endif
