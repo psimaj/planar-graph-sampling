@@ -1,0 +1,13 @@
+#include "OrderedBinaryTree.h"
+
+OrderedBinaryTreeNode::OrderedBinaryTreeNode(OrderedBinaryTreeNodePtr _parent) {
+    parent = _parent;
+}
+
+bool OrderedBinaryTreeNode::isRoot() {
+    return parent == nullptr;
+}
+
+bool OrderedBinaryTreeNode::isLeaf() {
+    return left == nullptr && right == nullptr;
+}
