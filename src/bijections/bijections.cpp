@@ -1,4 +1,5 @@
 #include <utility>
+#include <iostream>
 
 #include "bijections.h"
 #include "../structures/structures.h"

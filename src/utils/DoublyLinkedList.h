@@ -10,7 +10,7 @@ template<typename T>
 struct DoublyLinkedListNode;
 
 template<typename T> 
-using DoublyLinkedListNodePtr = std::shared_ptr<DoublyLinkedListNode<T>>;
+using DoublyLinkedListNodePtr = DoublyLinkedListNode<T>*;
 
 template<typename T>
 struct DoublyLinkedListNode {
@@ -22,9 +22,13 @@ struct DoublyLinkedListNode {
 };
 
 template<typename T>
-struct DoublyLinkedList {
+class DoublyLinkedList {
     size_t _size;
     DoublyLinkedListNodePtr<T> head;
+
+public:
+
+    DoublyLinkedList();
 
     void remove();
     void insertAfter(T);
@@ -41,6 +45,10 @@ template<typename T>
 DoublyLinkedListNode<T>::DoublyLinkedListNode(T _data) 
     : data(_data), previous(this), next(this) {}
 
+template<typename T>
+DoublyLinkedList<T>::DoublyLinkedList()
+    : _size(0), head(nullptr) {}
+    
 template<typename T>
 void DoublyLinkedList<T>::remove() {
     _size--;

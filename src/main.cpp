@@ -2,6 +2,7 @@
 
 #include "./generators/RemyBinaryTree.h"
 #include "./structures/structures.h"
+#include "./bijections/bijections.h"
 
 void parenthesesTraversal(OrderedBinaryTreeNodePtr node) {
     if (node == nullptr) {
@@ -25,11 +26,13 @@ void countingTraversal(RootedHalfGraph &graph) {
 }
 
 int main() {
-    OrderedBinaryTree tree = sampleRandomOrderedBinaryTreeRemy(5);
+    OrderedBinaryTree tree = sampleRandomOrderedBinaryTreeRemy(3, 0);
     parenthesesTraversal(tree.root);
     std::cout << std::endl;
     RootedHalfGraph graph(tree);
     std::cout << graph.vertices.size() << ' ' << graph.edges.size() << std::endl;
+    countingTraversal(graph);
+    binaryTreeToIrreducibleDissection(graph);
     countingTraversal(graph);
     return 0;
 }

@@ -10,8 +10,8 @@ struct HalfVertex;
 struct HalfVertexData;
 struct RootedHalfGraph;
 
-using HalfEdgePtr = std::shared_ptr<HalfEdge>;
-using HalfVertexPtr = std::shared_ptr<HalfVertex>;
+using HalfEdgePtr = HalfEdge*;
+using HalfVertexPtr = HalfVertex*;
 
 struct HalfEdge {
     HalfEdgePtr previous;
@@ -39,7 +39,7 @@ struct RootedHalfGraph {
     std::vector<HalfEdgePtr> edges;
     HalfVertexPtr root;
 
-    RootedHalfGraph(OrderedBinaryTree tree);
+    RootedHalfGraph(OrderedBinaryTree &tree);
 
     HalfVertexPtr addVertex();
     HalfEdgePtr addEdge(HalfVertexPtr = nullptr);

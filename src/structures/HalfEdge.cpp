@@ -8,7 +8,7 @@ bool HalfVertex::isLeaf() {
     return edge->other->next == edge;
 }
 
-RootedHalfGraph::RootedHalfGraph(OrderedBinaryTree tree) : root(new HalfVertex) {
+RootedHalfGraph::RootedHalfGraph(OrderedBinaryTree &tree) : root(new HalfVertex) {
     HalfEdgePtr downEdge(new HalfEdge(root));
     edges.push_back(downEdge);
     root->edge = downEdge;
@@ -35,6 +35,7 @@ HalfEdgePtr RootedHalfGraph::buildFromTree(OrderedBinaryTreeNodePtr node, HalfEd
         vertices.push_back(currentVertex);
     }
     HalfEdgePtr upEdge(new HalfEdge(currentVertex));
+    currentVertex->edge = upEdge;
     edges.push_back(upEdge);
     upEdge->other = previousEdge;
     previousEdge->other = upEdge;

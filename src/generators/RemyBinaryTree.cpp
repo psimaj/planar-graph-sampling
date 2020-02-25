@@ -16,7 +16,7 @@ void reconnect(OrderedBinaryTreeNodePtr parent, OrderedBinaryTreeNodePtr old, Or
     }
 }
 
-OrderedBinaryTree sampleRandomOrderedBinaryTreeRemy(size_t size) {
+OrderedBinaryTree sampleRandomOrderedBinaryTreeRemy(size_t size, int seed) {
     OrderedBinaryTree result = OrderedBinaryTree{nullptr};
     if (size == 0) {
         return result;
@@ -31,7 +31,6 @@ OrderedBinaryTree sampleRandomOrderedBinaryTreeRemy(size_t size) {
     nodes.push_back(left);
     nodes.push_back(right);
 
-    auto seed = std::chrono::steady_clock::now().time_since_epoch().count();
     std::mt19937 rnd(seed);
     std::uniform_int_distribution<> randomBit(0, 1);
 
