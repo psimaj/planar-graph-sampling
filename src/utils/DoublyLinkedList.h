@@ -1,5 +1,4 @@
-#ifndef DOUBLY_LINKED_LIST_H
-#define DOUBLY_LINKED_LIST_H
+#pragma once
 
 #include <memory>
 
@@ -48,7 +47,7 @@ DoublyLinkedListNode<T>::DoublyLinkedListNode(T _data)
 template<typename T>
 DoublyLinkedList<T>::DoublyLinkedList()
     : _size(0), head(nullptr) {}
-    
+
 template<typename T>
 void DoublyLinkedList<T>::remove() {
     _size--;
@@ -117,5 +116,3 @@ DoublyLinkedList<T>::~DoublyLinkedList() {
         remove();
     }
 }
-
-#endif

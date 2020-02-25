@@ -1,8 +1,5 @@
-#ifndef BIJECTIONS_H
-#define BIJECTIONS_H
+#pragma once
 
 #include "../structures/structures.h"
 
 void binaryTreeToIrreducibleDissection(RootedHalfGraph&);
-
-#endif

@@ -1,7 +1,4 @@
-#ifndef GRAPH_STRUCTURES_H
-#define GRAPH_STRUCTURES_H
+#pragma once
 
 #include "HalfEdge.h"
 #include "OrderedBinaryTree.h"
-
-#endif

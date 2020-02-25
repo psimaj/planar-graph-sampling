@@ -1,5 +1,4 @@
-#ifndef ORDERED_BINARY_TREE_H
-#define ORDERED_BINARY_TREE_H
+#pragma once
 
 #include <memory>
 
@@ -22,5 +21,3 @@ struct OrderedBinaryTreeNode {
 struct OrderedBinaryTree {
     OrderedBinaryTreeNodePtr root;
 };
-
-#endif

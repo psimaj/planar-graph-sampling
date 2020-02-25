@@ -1,5 +1,4 @@
-#ifndef HALF_EDGE_H
-#define HALF_EDGE_H
+#pragma once
 
 #include <vector>
 
@@ -45,5 +44,3 @@ struct RootedHalfGraph {
     HalfEdgePtr addEdge(HalfVertexPtr = nullptr);
     HalfEdgePtr buildFromTree(OrderedBinaryTreeNodePtr, HalfEdgePtr);
 };
-
-#endif
