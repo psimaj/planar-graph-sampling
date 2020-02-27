@@ -73,3 +73,24 @@ void binaryTreeToIrreducibleDissection(RootedHalfGraph &tree) {
     }
     tree.root = hexagon[0];
 }
+
+void irreducibleDissectionToQuadrangulation(RootedHalfGraph &dissection) {
+    HalfVertexPtr firstEnd = dissection.root, otherEnd = dissection.root->edge->other->previous->previous->origin;
+    HalfEdgePtr to = dissection.addEdge(firstEnd);
+    HalfEdgePtr from = dissection.addEdge(otherEnd);
+
+    to->other = from;
+    from->other = to;
+
+    to->next = otherEnd->edge->previous->other;
+    otherEnd->edge->previous->other->previous = to;
+    to->previous = firstEnd->edge->other;
+    firstEnd->edge->other->next = to;
+
+    from->next = firstEnd->edge->previous->other;
+    firstEnd->edge->previous->other->previous = from;
+    from->previous = otherEnd->edge->other;
+    otherEnd->edge->other->next = from;
+
+    dissection.root->edge = to;
+}
