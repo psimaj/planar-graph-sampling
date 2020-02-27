@@ -3,8 +3,8 @@
 #include <cmath>
 #include <vector>
 
-#include "../../generators/RemyBinaryTree.h"
-#include "../../structures/OrderedBinaryTree.h"
+#include "../../src/generators/RemyBinaryTree.h"
+#include "../../src/structures/OrderedBinaryTree.h"
 
 using namespace std;
 
@@ -24,8 +24,8 @@ double get_empirical_statistic(size_t count, size_t size, vector<long long> &see
     return sum / count;
 }
 
-double get_real_statistic(size_t count, size_t size) {
-    return (double) 2.0 * sqrt(M_PI * n);
+double get_real_statistic(size_t size) {
+    return (double) 2.0 * sqrt(M_PI * size);
 }
 
 int main() {
@@ -36,6 +36,6 @@ int main() {
         seeds[i] = i;
     }
     cout << "Empirical: " << get_empirical_statistic(count, size, seeds) << endl;
-    cout << "Read: " << get_real_statistic(count, size) << endl;
+    cout << "Read: " << get_real_statistic(size) << endl;
     return 0;
 }
