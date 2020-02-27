@@ -36,6 +36,6 @@ int main() {
         seeds[i] = i;
     }
     cout << "Empirical: " << get_empirical_statistic(count, size, seeds) << endl;
-    cout << "Read: " << get_real_statistic(size) << endl;
+    cout << "Real: " << get_real_statistic(size) << endl;
     return 0;
 }
