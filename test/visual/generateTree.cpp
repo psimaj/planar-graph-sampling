@@ -1,9 +1,9 @@
+#include <iostream>
+#include <chrono>
+
 #include "../../src/generators/RemyBinaryTree.h"
 #include "../../src/utils/conversion.h"
 #include "../../src/structures/HalfEdge.h"
-
-#include <iostream>
-#include <chrono>
 
 using namespace std;
 
