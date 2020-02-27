@@ -26,7 +26,7 @@ void binaryTreeToIrreducibleDissection(RootedHalfGraph &tree) {
         }
         currentEdge = currentEdge->previous;
     } while (currentEdge != tree.root->edge);
-    for (size_t i = stems.size(); i > 0 && stems.size() > 0; i--) {
+    for (size_t i = stems.size(); i > 0 && stems.size() > 0; i--, stems.goPrevious()) {
         while (stems.size() > 0 && stems.data().second > 3) {
             HalfEdgePtr outer = stems.data().first->edge;
             HalfEdgePtr inner = stems.data().first->edge->other;
@@ -61,14 +61,15 @@ void binaryTreeToIrreducibleDissection(RootedHalfGraph &tree) {
         hexagon[i]->edge->other->next = hexagon[(i+1) % 6]->edge->other;
         hexagon[i]->edge->other->previous = hexagon[(i+5) % 6]->edge->other;
     }
-    reconnectToHexagonVertex(stems.data().first, hexagon[0]);
-    stems.remove();
     size_t hexagonVertexIndex = 0;
     while (stems.size() > 0) {
+        reconnectToHexagonVertex(stems.data().first, hexagon[hexagonVertexIndex]);
         hexagonVertexIndex += 3 - stems.data().second;
         hexagonVertexIndex %= 6;
-        reconnectToHexagonVertex(stems.data().first, hexagon[hexagonVertexIndex]);
         stems.remove();
+        if (stems.size() > 0) {
+            stems.goNext();
+        }
     }
     tree.root = hexagon[0];
 }
