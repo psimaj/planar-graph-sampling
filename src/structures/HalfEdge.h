@@ -41,6 +41,7 @@ struct RootedHalfGraph {
     RootedHalfGraph(OrderedBinaryTree &tree);
 
     HalfVertexPtr addVertex();
+    void removeVertex(size_t);
     HalfEdgePtr addEdge(HalfVertexPtr = nullptr);
     HalfEdgePtr buildFromTree(OrderedBinaryTreeNodePtr, HalfEdgePtr);
 };

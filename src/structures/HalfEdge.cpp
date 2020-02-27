@@ -24,6 +24,11 @@ HalfVertexPtr RootedHalfGraph::addVertex() {
     return newVertex;
 }
 
+void RootedHalfGraph::removeVertex(size_t index) {
+    std::swap(vertices[index], vertices.back());
+    vertices.pop_back();
+}
+
 HalfEdgePtr RootedHalfGraph::addEdge(HalfVertexPtr vertex) {
     HalfEdgePtr newEdge(new HalfEdge(vertex));
     edges.push_back(newEdge);
