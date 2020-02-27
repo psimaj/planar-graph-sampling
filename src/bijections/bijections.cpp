@@ -52,6 +52,7 @@ void binaryTreeToIrreducibleDissection(RootedHalfGraph &tree) {
     }
     for (size_t i = 0; i < 6; i++) {
         HalfEdgePtr newEdge = tree.addEdge(hexagon[(i+5) % 6]);
+        newEdge->other = hexagon[i]->edge;
         hexagon[i]->edge->other = newEdge;
         hexagon[i]->edge->next = hexagon[(i+5) % 6]->edge;
         hexagon[i]->edge->previous = hexagon[(i+1) % 6]->edge;

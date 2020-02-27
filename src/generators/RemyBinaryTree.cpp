@@ -16,7 +16,7 @@ void reconnect(OrderedBinaryTreeNodePtr parent, OrderedBinaryTreeNodePtr old, Or
     }
 }
 
-OrderedBinaryTree sampleRandomOrderedBinaryTreeRemy(size_t size, int seed) {
+OrderedBinaryTree sampleRandomOrderedBinaryTreeRemy(size_t size, long long seed) {
     OrderedBinaryTree result = OrderedBinaryTree{nullptr};
     if (size == 0) {
         return result;
