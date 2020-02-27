@@ -1,27 +1,45 @@
-FLAGS    := -pedantic-errors -Wall -Wextra -Werror -std=c++14
-BUILD    := ./build
-OBJ_DIR  := $(BUILD)/objects
-BIN_DIR  := $(BUILD)/bin
-TARGET   := program
-INCLUDE  := -Iinclude/
-SRC      := $(wildcard src/structures/*.cpp) \
-            $(wildcard src/utils/*.cpp)      \
+FLAGS   := -pedantic-errors -Wall -Wextra -Werror -std=c++14
+BUILD   := ./build
+OBJ_DIR := $(BUILD)/objects
+BIN_DIR := $(BUILD)/bin
+TEST_DIR:= $(BUILD)/test
+MAIN_TARGET  := program
+TREE_TARGET := generateTree
+DISSECTION_TARGET := generateDissection
+INCLUDE := -Iinclude/
+SRC     := $(wildcard src/structures/*.cpp)  \
 			$(wildcard src/generators/*.cpp) \
 			$(wildcard src/bijections/*.cpp) \
-			$(wildcard src/utils/*.cpp) \
-            $(wildcard src/*.cpp)            \
+			$(wildcard src/utils/*.cpp) 	 \
 
-OBJECTS := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
+TEST	:= $(wildcard test/visual/*.cpp) 	   \
+			$(wildcard test/statistical/*.cpp) \
 
-all: build $(BIN_DIR)/$(TARGET)
+COMMON_OBJECTS := $(SRC:%.cpp=$(OBJ_DIR)/%.o)   \
+
+MAIN_TARGET_OBJECT := $(OBJ_DIR)/src/main.o
+TREE_TARGET_OBJECT := $(OBJ_DIR)/test/visual/generateTree.o
+DISSECTION_TARGET_OBJECT := $(OBJ_DIR)/test/visual/generateDissection.o
+
+all: build $(BIN_DIR)/$(MAIN_TARGET)
+all: build $(BIN_DIR)/$(TREE_TARGET)
+all: build $(BIN_DIR)/$(DISSECTION_TARGET)
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(@D)
 	g++ $(FLAGS) $(INCLUDE) -o $@ -c $<
 
-$(BIN_DIR)/$(TARGET): $(OBJECTS)
+$(BIN_DIR)/$(MAIN_TARGET): $(COMMON_OBJECTS) $(MAIN_TARGET_OBJECT)
 	@mkdir -p $(@D)
-	g++ $(FLAGS) $(INCLUDE) $(LDFLAGS) -o $(BIN_DIR)/$(TARGET) $(OBJECTS)
+	g++ $(FLAGS) $(INCLUDE) $(LDFLAGS) -o $(BIN_DIR)/$(MAIN_TARGET) $(COMMON_OBJECTS) $(MAIN_TARGET_OBJECT)
+
+$(BIN_DIR)/$(TREE_TARGET): $(COMMON_OBJECTS) $(TREE_TARGET_OBJECT)
+	@mkdir -p $(@D)
+	g++ $(FLAGS) $(INCLUDE) $(LDFLAGS) -o $(BIN_DIR)/$(TREE_TARGET) $(COMMON_OBJECTS) $(TREE_TARGET_OBJECT)
+
+$(BIN_DIR)/$(DISSECTION_TARGET): $(COMMON_OBJECTS) $(DISSECTION_TARGET_OBJECT)
+	@mkdir -p $(@D)
+	g++ $(FLAGS) $(INCLUDE) $(LDFLAGS) -o $(BIN_DIR)/$(DISSECTION_TARGET) $(COMMON_OBJECTS) $(DISSECTION_TARGET_OBJECT)
 
 .PHONY: all build clean debug release
 
