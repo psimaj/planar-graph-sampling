@@ -29,6 +29,7 @@ int main() {
     OrderedBinaryTree tree = sampleRandomOrderedBinaryTreeRemy(n, seed);
     RootedHalfGraph halfTree(tree);
     binaryTreeToIrreducibleDissection(halfTree);
+    irreducibleDissectionToQuadrangulation(halfTree);
     vector<vector<int>> adj = halfGraphToAdjacencyList(halfTree);
     printAdjacencyList(adj);
 }
